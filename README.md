@@ -19,7 +19,7 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 - [ ] Creating Child Processes
 - [ ] Writing Unit Tests
 
-## Setting Up 
+## 🐟 Setting Up 
 
 ### Downloading Node 
 ❌ Downloading Node with package managers can lag behind and cause compatibility problems (i.e. Brew for MacOS)<br>
@@ -29,7 +29,7 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 ❔ Aside from the Node binary, what else does a Node installation provide?
  A module package manager 
 
-## Node Binary 
+## 🐟 Node Binary 
 
 ### Command options
 To see all Node command line flags for any version of Node, execute `node --help` and view the output. Beyond the Node command line flags there are additional flags for modifying the JavaScript runtime engine: V8. To view these flags run `node --v8-options`.
@@ -53,3 +53,8 @@ Usually a module would be required, like so: `require('fs')`, however all Node c
 For example, the following would print all the files with a .js extension in the current working directory in which the command is run:
 
 node -p "fs.readdirSync('.').filter((f) => /.js$/.test(f))"
+
+### Stack Trace Limit
+Set stack trace limit like `node --stack-trace-limit=99999 app.js`
+
+Generally, the stack trace limit should stay at the default in production scenarios due to the overhead involved with retaining long stacks. It can nevertheless be useful for development purposes.
