@@ -1,4 +1,4 @@
-# jsnad-study-guide
+# Notes for JSNAD prep
 
 Sections from Linux Foundation Node.js Application Development (LFW211) course
 
