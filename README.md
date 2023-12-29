@@ -58,3 +58,5 @@ node -p "fs.readdirSync('.').filter((f) => /.js$/.test(f))"
 Set stack trace limit like `node --stack-trace-limit=99999 app.js`
 
 Generally, the stack trace limit should stay at the default in production scenarios due to the overhead involved with retaining long stacks. It can nevertheless be useful for development purposes.
+
+❔ Which flag allows a CommonsJS module to be preloaded? `-r` or `--require`
