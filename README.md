@@ -25,3 +25,6 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 ❌ Downloading Node with package managers can lag behind and cause compatibility problems (i.e. Brew for MacOS)<br>
 ❌ Another significant issue with installing Node.js via an OS package manager is that installing global modules with Node's module installer (npm) tends to require the use of sudo (a command which grants root privileges)<br>
 ✅ Use Node version manager (nvm) `nvm install 20`
+
+❔ Aside from the Node binary, what else does a Node installation provide?
+ A module package manager 
