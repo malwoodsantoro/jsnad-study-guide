@@ -18,3 +18,10 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 - [ ] Process & Operating System
 - [ ] Creating Child Processes
 - [ ] Writing Unit Tests
+
+## Setting Up 
+
+### Downloading Node 
+❌ Downloading Node with package managers can lag behind and cause compatibility problems (i.e. Brew for MacOS)<br>
+❌ Another significant issue with installing Node.js via an OS package manager is that installing global modules with Node's module installer (npm) tends to require the use of sudo (a command which grants root privileges)<br>
+✅ Use Node version manager (nvm) `nvm install 20`
