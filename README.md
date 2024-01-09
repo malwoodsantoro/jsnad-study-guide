@@ -5,7 +5,7 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 - [x] Introduction (completed 12/29)
 - [x] Setting Up (completed 12/29)
 - [x] Node Binary (completed 12/29)
-- [ ] Debugging and Diagnostics 
+- [x] Debugging and Diagnostics (completed 1/9)
 - [ ] Key JavaScript Concepts
 - [ ] Packages & Dependencies
 - [ ] Node's Module Systems
@@ -60,3 +60,49 @@ Set stack trace limit like `node --stack-trace-limit=99999 app.js`
 Generally, the stack trace limit should stay at the default in production scenarios due to the overhead involved with retaining long stacks. It can nevertheless be useful for development purposes.
 
 ❔ Which flag allows a CommonsJS module to be preloaded? `-r` or `--require`
+
+## ▶︎ Debugging and diagnostics 
+
+### Inspect Mode 
+Inspect mode can be enabled with the --inspect flag:
+
+`node --inspect app.js`
+
+For most cases however, it is better to cause the process to start with an active breakpoint at the very beginning of the program using the --inspect-brk flag:
+
+`node --inspect-brk app.js` --> execution is paused at the first line of executable code (like function call below)
+
+![image](https://github.com/malwoodsantoro/jsnad-study-guide/assets/19801577/5e1ae698-0c76-4b8d-81ef-d7cd046afdf6)
+
+More debugging info: https://nodejs.org/en/guides/debugging-getting-started
+
+### Breaking on Error
+The "Pause on exceptions" feature can be used to automatically set a breakpoint at the line where an error is thrown
+
+### Adding a Breakpoint in Devtools
+Clicking the blue play button in the right column will cause program execution to resume, the f function will be called and the runtime will pause on line 3:
+
+![image](https://github.com/malwoodsantoro/jsnad-study-guide/assets/19801577/94ebcf26-402d-4118-92e8-de8b8d95caa0)
+
+### Adding a Breakpoint in Code
+
+The debugger statement can be used to explicitly pause on the line that the statement appears when debugging.
+
+```
+function f (n = 99) {
+  if (n === 0) throw Error()
+  debugger
+  f(n - 1)
+}
+f()
+```
+
+💭 _When not debugging, these debugger statements are ignored, however due to noise and potential performance impact it is not good practice to leave debugger statements in code._
+
+❔What keyword can be used within the code of a program to cause the process to pause on a specific line when in debug mode? `debugger`
+❔In order to set a breakpoint on the first line of execution when entering debug mode, which flag should be used? `--inspect-brk`
+
+### Key JavaScript Concepts
+
+### Packages & Dependencies
+
