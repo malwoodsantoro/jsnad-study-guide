@@ -6,7 +6,7 @@ Sections from Linux Foundation Node.js Application Development (LFW211) course
 - [x] Setting Up (completed 12/29)
 - [x] Node Binary (completed 12/29)
 - [x] Debugging and Diagnostics (completed 1/9)
-- [ ] Key JavaScript Concepts
+- [-] Key JavaScript Concepts 
 - [ ] Packages & Dependencies
 - [ ] Node's Module Systems
 - [ ] Asynchronous Control Flow
@@ -99,10 +99,82 @@ f()
 
 💭 _When not debugging, these debugger statements are ignored, however due to noise and potential performance impact it is not good practice to leave debugger statements in code._
 
-❔What keyword can be used within the code of a program to cause the process to pause on a specific line when in debug mode? `debugger`
+❔What keyword can be used within the code of a program to cause the process to pause on a specific line when in debug mode? `debugger`<br>
 ❔In order to set a breakpoint on the first line of execution when entering debug mode, which flag should be used? `--inspect-brk`
 
-### Key JavaScript Concepts
+## ▶︎ Key Javascript concepts
+### Data types
 
-### Packages & Dependencies
+**LOOSELY** typed language - meaning that variable types are not strictly enforced, allowing for dynamic and flexible variable assignments without explicit type declarations. 
 
+JavaScript 7️⃣ primitives are as follows:
+
+- null - deliberate assignment to indicate the absence of a meaningful value
+- undefined - any variable initialized without a value 
+- Number: 1, 1.5, -1e4, NaN
+- BigInt: 1n, 9007199254740993n
+- String: 'str', "str", `str ${var}`
+- Boolean: true, false
+- Symbol: Symbol('description'), Symbol.for('namespace')
+
+Other than that, absolutely everything else in JavaScript is an **object**.
+
+All JavaScript objects have **prototypes**. A prototype is an implicit reference to another object that is queried in property lookups. If an object doesn't have a particular property, the object's prototype is checked for that property. If the object's prototype does not have that property, the object's prototype's prototype is checked and so on.
+
+### Functions 
+
+A function can be assigned to an object:
+
+```
+const obj = { id: 999, fn: function () { console.log(this.id) } }
+obj.fn() // prints 999
+```
+When a function is assigned to an object, when the implicit **this** keyword is accessed within that function it will refer to the object on which the function was called. This is why obj.fn() outputs 999. 
+
+Functions have a **call** method that can be used to set their this context:
+
+```
+function fn() { console.log(this.id) }
+const obj = { id: 999 }
+const obj2 = { id: 2 }
+fn.call(obj2) // prints 2
+fn.call(obj) // prints 999
+fn.call({id: ':)'}) // prints :)
+```
+
+In this case the fn function wasn't assigned to any of the objects, this was set dynamically via the **call** function.
+
+### Functional prototypal inheritance 
+
+The functional approach to creating prototype chains is to use **Object.create**:
+
+```
+const wolf = {
+  howl: function () { console.log(this.name + ': awoooooooo') }
+}
+
+const dog = Object.create(wolf, {
+  woof: { value: function() { console.log(this.name + ': woof') } }
+})
+
+const rufus = Object.create(dog, {
+  name: {value: 'Rufus the dog'}
+})
+
+rufus.woof() // prints "Rufus the dog: woof"
+rufus.howl() // prints "Rufus the dog: awoooooooo"
+```
+
+To describe the full prototype chain:
+
+    - the prototype of rufus is dog
+    - the prototype of dog is wolf
+    - the prototype of wolf is Object.prototype.
+
+### Constructor function prototypal inheritance 
+
+
+
+## ▶︎ Data Types
+
+## Packages & Dependencies
